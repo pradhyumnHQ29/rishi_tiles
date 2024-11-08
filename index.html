@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishi Tiles and Marble</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        header .container {
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            background: url('your-hero-image.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .hero-content h2 {
+            font-size: 2.5em;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            background: #f9c74f;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .product-grid, .gallery-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .product, .gallery-grid img {
+            margin: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .gallery-grid img {
+            width: 300px; /* Adjust as needed */
+            height: auto;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #333;
+            color: white;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <header>
+        <div class="container">
+            <h1>Rishi Tiles and Marble</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="calculator-container">
+        <h2>Tile & Marble Calculator</h2>
+        
+        <!-- Tile Dimensions -->
+        <label for="tile-width">Tile Width (cm):</label>
+        <input type="number" id="tile-width" placeholder="Enter tile width" required>
+    
+        <label for="tile-height">Tile Height (cm):</label>
+        <input type="number" id="tile-height" placeholder="Enter tile height" required>
+    
+        <!-- Room Dimensions -->
+        <label for="room-length">Room Length (cm):</label>
+        <input type="number" id="room-length" placeholder="Enter room length" required>
+    
+        <label for="room-width">Room Width (cm):</label>
+        <input type="number" id="room-width" placeholder="Enter room width" required>
+    
+        <!-- Cost per Tile -->
+        <label for="tile-cost">Cost per Tile (₹):</label>
+        <input type="number" id="tile-cost" placeholder="Enter cost per tile" required>
+    
+        <button onclick="calculateTiles()">Calculate</button>
+    
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        function calculateTiles() {
+            // Get values from the input fields
+            const tileWidth = parseFloat(document.getElementById('tile-width').value);
+            const tileHeight = parseFloat(document.getElementById('tile-height').value);
+            const roomLength = parseFloat(document.getElementById('room-length').value);
+            const roomWidth = parseFloat(document.getElementById('room-width').value);
+            const tileCost = parseFloat(document.getElementById('tile-cost').value);
+    
+            // Calculate tile area and room area
+            const tileArea = (tileWidth / 100) * (tileHeight / 100); // in square meters
+            const roomArea = (roomLength / 100) * (roomWidth / 100); // in square meters
+    
+            // Calculate the number of tiles needed
+            const tilesNeeded = Math.ceil(roomArea / tileArea);
+            const totalCost = tilesNeeded * tileCost;
+    
+            // Display the result
+            document.getElementById('result').innerHTML = `
+                <p>Tiles Required: <strong>${tilesNeeded}</strong></p>
+                <p>Total Cost: <strong>₹${totalCost.toFixed(2)}</strong></p>
+            `;
+        }
+    </script>
+    
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Transform Your Space with Elegant Tiles & Marbles</h2>
+            <a href="#products" class="cta-button">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Rishi Tiles and Marble, we offer the finest quality tiles and marbles that elevate your spaces. Our mission is to provide exceptional products tailored to your needs.</p>
+        <div class="contact-info">
+            <h3>Retail and Wholesale Tiles, Marble, and Sanitary</h3>
+            <p>Near Ware, Chachai, Road Paraswar, Anuppur (M.P) - 484224</p>
+            <p>Mobile No: <strong>+91 98xxxxx</strong></p>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="wall.jpg" alt="Wall Tiles">
+                <h3>Wall Tiles</h3>
+                <p>Stylish and durable wall tiles.</p>
+            </div>
+            <div class="product">
+                <img src="t2.jpg" alt="Floor Tiles">
+                <h3>Floor Tiles</h3>
+                <p>High-quality floor tiles for every room.</p>
+            </div>
+            <div class="product">
+                <img src="marble1.webp" alt="Marble">
+                <h3>Marble</h3>
+                <p>Elegant marbles for luxury finishes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p>Take a look at our beautiful projects:</p>
+        <div class="gallery-grid">
+            <img src="tile.jpg" alt="Project 1">
+            <img src="marblee.jpg" alt="Project 2">
+            <img src="IT.jpeg" alt="Project 3">
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <p>"Rishi Tiles has transformed my home beautifully!" - A Happy Customer</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rishi Tiles and Marble. All rights reserved.</p>
+    </footer>
+
+    
+    <script src="main.js"></script>
+</body>
+</html>
